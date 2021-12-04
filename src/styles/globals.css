@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.section-bg {
+  @apply bg-no-repeat bg-cover bg-center;
+}
