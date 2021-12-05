@@ -7,3 +7,26 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.home-intro-bg {
+  background-image: url(/images/pages/home/intro-bg.jpeg);
+}
+
+.home-section-2-bg {
+  background-image: url(/images/pages/home/section-2-bg.jpeg);
+}
+
+.home-token-allocation-section-bg {
+  background-image: url(/images/pages/home/token-bg.jpeg);
+}
+.heading {
+  background: linear-gradient(to bottom, #662e1c, #af4425);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  &-small {
+    @apply text-4xl sm:text-6xl;
+  }
+  &-large {
+    @apply text-6xl sm:text-8xl;
+  }
+}

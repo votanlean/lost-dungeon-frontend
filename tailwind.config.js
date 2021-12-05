@@ -6,11 +6,6 @@ module.exports = {
     fontFamily: {
       creepster: 'Creepster',
     },
-    extend: {
-      backgroundImage: () => ({
-        'home-intro': 'url(/images/home-intro-bg.jpeg)',
-      }),
-    },
   },
   variants: {
     extend: {},
