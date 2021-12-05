@@ -3,6 +3,9 @@ module.exports = {
   purge: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      creepster: 'Creepster',
+    },
     extend: {
       backgroundImage: () => ({
         'home-intro': 'url(/images/home-intro-bg.jpeg)',
@@ -12,5 +15,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/aspect-ratio')],
 };

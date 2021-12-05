@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './pages/home';
+
+html {
+  @apply text-gray-200;
+  font-family: 'Baloo Bhai 2', cursive;
+}
