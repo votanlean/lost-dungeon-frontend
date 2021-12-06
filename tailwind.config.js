@@ -6,6 +6,14 @@ module.exports = {
     fontFamily: {
       creepster: 'Creepster',
     },
+    extend: {
+      colors: {
+        main1: '#Af4425',
+        main2: '#662e1c',
+        main3: '#011a27',
+        main4: '#063825',
+      },
+    },
   },
   variants: {
     extend: {},
