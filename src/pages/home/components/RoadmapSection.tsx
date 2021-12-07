@@ -1,13 +1,17 @@
 const RoadmapSection = () => (
-  <section className="p-4 py-8 sm:py-20 h-screen home-section-2-bg home-section-bg">
+  <section className="p-4 py-8 sm:py-20 h-screen home-bg-2 home-section-bg">
     <div className="flex flex-col items-center max-w-5xl mx-auto">
       <div className="flex flex-col sm:flex-row gap-4 w-full mb-20">
-        <h2 className="flex-1 font-creepster home-heading home-heading-large">ROADMAP</h2>
         <div className="flex-1">
-          <p className="text-3xl uppercase">
-            Check out our tentative milestone in order not to miss the chance of owning your
-            precious assets in DeFiHorse.
-          </p>
+          <h2 className="home-heading">ROADMAP</h2>
+        </div>
+        <div className="flex-1">
+          <div className="frame-stone p-4">
+            <p className="frame-paper p-8 text-3xl uppercase text-main2">
+              Check out our tentative milestone in order not to miss the chance of owning your
+              precious assets in DeFiHorse.
+            </p>
+          </div>
         </div>
       </div>
       <div className="flex flex-col sm:flex-row gap-8 justify-between w-full">
@@ -28,17 +32,17 @@ interface IProps {
 const Milestone = (props: IProps) => {
   const { time, items, phase } = props;
   return (
-    <div className="flex flex-col flex-1 items-center skew-x-12">
-      <div className="rounded-full p-2 border-main4 border-4 -skew-x-12 mb-12">
-        <div className="rounded-full bg-white flex justify-center items-center h-16 w-16 text-4xl text-main1 font-bold">
+    <div className="flex flex-col flex-1 items-center -skew-x-6">
+      <div className="rounded-full p-2 border-main1 border-4 skew-x-6 mb-12">
+        <div className="rounded-full bg-white flex justify-center items-center h-12 w-12 text-3xl text-main1 font-bold">
           {phase}
         </div>
       </div>
-      <div className="bg-gradient-to-r from-main3 to-main4 p-8  rounded flex-1">
-        <div className="text-2xl mb-4 -skew-x-12">{time}</div>
+      <div className="frame-paper text-main2 p-8  rounded flex-1">
+        <div className="text-2xl mb-4 skew-x-6">{time}</div>
         <ul className="list-disc">
           {items.map((item) => (
-            <li key={item} className="text-base  -skew-x-12">
+            <li key={item} className="text-base  skew-x-6">
               {item}
             </li>
           ))}

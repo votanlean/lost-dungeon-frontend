@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     fontFamily: {
       creepster: 'Creepster',
+      soup: 'soup of justice',
     },
     extend: {
       colors: {
@@ -12,6 +13,7 @@ module.exports = {
         main2: '#662e1c',
         main3: '#011a27',
         main4: '#063825',
+        secondary1: '#Ebdcb2',
       },
     },
   },

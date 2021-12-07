@@ -9,27 +9,17 @@
     -webkit-text-fill-color: transparent;
   }
 
-  &-intro-bg {
-    background-image: url(/images/pages/home/intro-bg.jpeg);
+  &-bg-1 {
+    background-image: url(/assets/images/pages/home/bg1.jpeg);
   }
-
-  &-section-2-bg {
-    background-image: url(/images/pages/home/section-2-bg.jpeg);
-  }
-
-  &-token-section-bg {
-    background-image: url(/images/pages/home/token-bg.jpeg);
+  &-bg-2 {
+    background-image: url(/assets/images/pages/home/bg2.jpeg);
   }
 
   &-heading {
-    background: linear-gradient(to bottom, #662e1c, #af4425);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    &-small {
-      @apply text-4xl sm:text-6xl;
-    }
-    &-large {
-      @apply text-6xl sm:text-8xl;
-    }
+    @apply font-soup text-4xl sm:text-6xl text-secondary1 text-center inline-block px-20 py-10;
+    background-image: url(/assets/images/button-frame.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
   }
 }
