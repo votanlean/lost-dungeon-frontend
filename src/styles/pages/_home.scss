@@ -17,9 +17,12 @@
   }
 
   &-heading {
-    @apply font-soup text-4xl sm:text-6xl text-secondary1 text-center inline-block px-20 py-10;
+    @apply font-soup text-4xl sm:text-6xl text-secondary1 text-center inline-block px-20 py-10 uppercase;
     background-image: url(/assets/images/button-frame.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
+  }
+  &-content {
+    @apply max-w-5xl mx-auto;
   }
 }
