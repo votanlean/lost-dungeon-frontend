@@ -19,6 +19,10 @@ export default function Home() {
       <RoadmapSection />
       <TeamSection />
       <PartnerSection />
+
+      <footer className="bg-black text-secondary1 text-center p-4">
+        Copyright 2021 © Lost Dungeon
+      </footer>
     </div>
   );
 }

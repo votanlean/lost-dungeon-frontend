@@ -12,7 +12,7 @@ const IntroSection = () => (
       />
       <div className="aspect-w-16 aspect-h-9 w-full mb-8">
         <iframe
-          src="https://www.youtube.com/embed/Ma3NRsq4nzE"
+          src="https://www.youtube.com/embed/f2_NrupILeQ"
           title="Lost Dungeon"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media"
