@@ -1,43 +1,18 @@
 import Image from 'next/image';
 
-const TeamSection = () => (
-  <section className="p-4 py-8 sm:py-20 min-h-screen home-bg-1 home-section-bg">
-    <div className="max-w-5xl mx-auto">
-      <h2 className="pb-20 text-center">
-        <p className="home-heading">TEAM</p>
-      </h2>
-      <div className="frame-stone p-8 px-12 pb-16 -mx-24 mb-24">
-        <div className="frame-paper p-16 text-main2 grid grid-cols-4 gap-8 justify-between w-full">
-          {[...TEAM_DATA, ...TEAM_DATA, ...TEAM_DATA, ...TEAM_DATA].map(
-            ({ avatar, name, title, experiences }, index) => (
-              <Member
-                avatar={avatar}
-                name={name}
-                title={title}
-                experiences={experiences}
-                key={index}
-              />
-            )
-          )}
-        </div>
-      </div>
-      <h2 className="pb-20 text-center">
-        <p className="home-heading">ADVISORS</p>
-      </h2>
-      <div className="frame-stone p-8 px-12 pb-16 -mx-24">
-        <div className="frame-paper p-16 text-main2 grid grid-cols-4 gap-8 justify-between w-full">
-          {[...TEAM_DATA, ...TEAM_DATA, ...TEAM_DATA, ...TEAM_DATA].map(
-            ({ avatar, name, title, experiences }, index) => (
-              <Member
-                avatar={avatar}
-                name={name}
-                title={title}
-                experiences={experiences}
-                key={index}
-              />
-            )
-          )}
-        </div>
+interface IProps {
+  id: string;
+  className?: string;
+}
+
+const TeamSection = ({ id, className }: IProps) => (
+  <section id={id} className={className}>
+    <div className="w-full px-8 flex flex-col items-center">
+      <h2 className="home-heading mx-auto mb-36">TEAM</h2>
+      <div className="w-full max-w-7xl flex flex-row justify-between">
+        {TEAM_DATA.map(({ avatar, name, title, experiences }, index) => (
+          <Member avatar={avatar} name={name} title={title} experiences={experiences} key={index} />
+        ))}
       </div>
     </div>
   </section>
@@ -53,40 +28,62 @@ interface IMember {
 const Member = (props: IMember) => {
   const { avatar, name, title, experiences } = props;
   return (
-    <div>
-      <Image
-        src={avatar}
-        alt="logo"
-        layout="intrinsic"
-        width={250}
-        height={250}
-        objectFit="cover"
-      />
-      <p className="text-3xl">{name}</p>
-      <p className="text-2xl">{title}</p>
-      <ul className="list-disc">
-        {experiences.map((experience) => (
-          <li key={experience}>{experience}</li>
-        ))}
-      </ul>
+    <div className="w-40">
+      <Image src={avatar} alt="logo" layout="intrinsic" width={168} height={189} />
+      <div className="relative" style={{ marginTop: -38 }}>
+        <p className="text-center font-bold mb-7" style={{ fontSize: '13px' }}>
+          {title}
+        </p>
+        <p className="text-lg text-center font-bold mb-2">{name}</p>
+        <ul className="list-disc">
+          {experiences.map((experience) => (
+            <li key={experience} className="whitespace-pre-wrap">
+              {experience}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
 
 const TEAM_DATA: IMember[] = [
   {
-    avatar: '/assets/images/members/avatar.jpg',
-    name: 'Edison Mai',
-    title: 'CEO',
+    avatar: '/assets/images/members/ceo.png',
+    name: 'Alex Vo',
+    title: 'C.E.O',
     experiences: [
-      'Serial Entrepreneur',
-      '15 years of experience in operating and investing',
-      'Founder of LPDI',
-      'Founder of Citi Golf',
-      'Founder of Chef Station',
-      'Chairman of Chewy Chewy',
-      'Chairman of Otoke Chicken',
+      'Blockchain team leader at Asia Focus Group.',
+      'VBI lab NFT group’s leader.',
+      '9 years  of experience in several fields: Finance, Web and Mobile development, DeFi, NFT.',
     ],
+  },
+  {
+    avatar: '/assets/images/members/cmo.png',
+    name: 'Lucas Vo',
+    title: 'C.M.O',
+    experiences: [
+      'Blockchain team leader of AWBC - Second prize Team Google Developer Group Hackathon 2021.',
+      '5 years of experience in marketing at LEGO, Lazada.',
+    ],
+  },
+  {
+    avatar: '/assets/images/members/game-director.png',
+    name: 'Bruce Nguyen',
+    title: 'Game Producer',
+    experiences: ['5 years of experence in Game Design, Game Production (2D, 3D, VR platform).'],
+  },
+  {
+    avatar: '/assets/images/members/game-leader.png',
+    name: 'Barry Hoang',
+    title: 'Tech Leader',
+    experiences: ['5 years of experence in Game Development  (2D, 3D, VR platform).'],
+  },
+  {
+    avatar: '/assets/images/members/art-director.png',
+    name: 'Luna Le',
+    title: 'Art Director',
+    experiences: ['5 years of experience in Design, Digital Art.'],
   },
 ];
 

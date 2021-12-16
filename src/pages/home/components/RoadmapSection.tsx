@@ -1,91 +1,92 @@
-const RoadmapSection = () => (
-  <section className="p-4 py-8 sm:py-20 h-screen home-bg-2 home-section-bg">
-    <div className="flex flex-col items-center max-w-5xl mx-auto">
-      <div className="flex flex-col sm:flex-row gap-4 w-full mb-20">
-        <div className="flex-1">
-          <h2 className="home-heading">ROADMAP</h2>
+import Image from 'next/image';
+import { classnames, TArg } from 'tailwindcss-classnames';
+interface IProps {
+  id: string;
+  className?: string;
+}
+
+const RoadmapSection = ({ id, className }: IProps) => (
+  <section id={id} className={className}>
+    <div className="w-full px-8 flex flex-col items-center">
+      <h2 className="home-heading mx-auto mb-14">ROADMAP</h2>
+
+      <div>
+        <Image
+          src="/assets/images/pages/home/road-map.png"
+          alt="Game Concept"
+          layout="intrinsic"
+          width={1544}
+          height={452}
+        />
+        <div className="flex flex-row justify-between">
+          <Milestone milestone={ROADMAP_DATA[0]} />
+          <Milestone milestone={ROADMAP_DATA[1]} style={{ marginTop: '-3%' }} />
+          <Milestone milestone={ROADMAP_DATA[2]} style={{ marginTop: '-7.5%' }} />
+          <Milestone milestone={ROADMAP_DATA[3]} style={{ marginTop: '-12.5%' }} />
+          <Milestone milestone={ROADMAP_DATA[4]} style={{ marginTop: '-17.5%' }} />
         </div>
-        <div className="flex-1">
-          <div className="frame-stone p-4">
-            <p className="frame-paper p-8 text-3xl uppercase text-main2">
-              Check out our tentative milestone in order not to miss the chance of owning your
-              precious assets in DeFiHorse.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="flex flex-col sm:flex-row gap-8 justify-between w-full">
-        {ROADMAP_DATA.map(({ time, items, phase }) => (
-          <Milestone time={time} items={items} phase={phase} key={phase} />
-        ))}
       </div>
     </div>
   </section>
 );
 
-interface IProps {
-  time: string;
-  items: Array<string>;
-  phase: number;
+interface IMilestone {
+  milestone: { time?: string; items: Array<string> };
+  className?: TArg;
+  style?: React.CSSProperties;
 }
 
-const Milestone = (props: IProps) => {
-  const { time, items, phase } = props;
+const Milestone = ({ milestone, className, style }: IMilestone) => {
+  const { time, items } = milestone;
   return (
-    <div className="flex flex-col flex-1 items-center -skew-x-6">
-      <div className="rounded-full p-2 border-main1 border-4 skew-x-6 mb-12">
-        <div className="rounded-full bg-white flex justify-center items-center h-12 w-12 text-3xl text-main1 font-bold">
-          {phase}
-        </div>
-      </div>
-      <div className="frame-paper text-main2 p-8  rounded flex-1">
-        <div className="text-2xl mb-4 skew-x-6">{time}</div>
-        <ul className="list-disc">
-          {items.map((item) => (
-            <li key={item} className="text-base  skew-x-6">
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className={classnames('text-center', className)} style={{ ...style, width: '14%' }}>
+      <div className="text-lg mb-2 font-medium">{time}</div>
+      <ul>
+        {items.map((item) => (
+          <li key={item} className="text-base whitespace-pre-wrap">
+            - {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
 const ROADMAP_DATA = [
   {
-    phase: 1,
-    time: 'Dec 2021',
-    items: ['Lite paper & Pitch deck', 'Tokenomic', 'Lite Website', 'Smart contract'],
+    items: ['Build Game Concept', 'Design Characters', 'Build Marketing Campaign & Community'],
   },
   {
-    phase: 2,
-    time: 'Dec 2021',
+    time: '11/2021',
+    items: ['Lite Paper & Pitch Deck', 'Tokenomic', 'Lite Website', 'Smart Contract'],
+  },
+  {
+    time: '12/2021',
     items: [
-      'token audit',
-      'Full website & our team',
-      'Private sales',
-      'NFT giveaway',
+      'Token Audit',
+      'Landing Page',
+      'Private Sales',
+      'NFT Giveaway',
       'Airdrop',
-      'Pre Public sales',
+      'Early Bird',
+      'Trailer Release',
     ],
   },
   {
-    phase: 3,
-    time: 'Jan 2022',
+    time: '01/2022',
     items: [
-      'Public sales',
-      'NFT Collectibles (Shop)',
-      'Satking feature',
+      'IDO',
+      'Liquidity',
+      'Genesis NFTs',
       'Marketplace',
-      'Trailer release',
-      'White paper release',
+      'White Paper Release',
+      'Alpha Tester Release',
+      'PvE (Public Game)',
     ],
   },
   {
-    phase: 4,
-    time: 'Quater 1 2022',
-    items: ['Alpha Test', 'PvE (Public game)', 'PvP'],
+    time: 'Q1/2022',
+    items: ['Staking', 'Craft Items', 'Rune Equipment', 'PvP'],
   },
 ];
 
