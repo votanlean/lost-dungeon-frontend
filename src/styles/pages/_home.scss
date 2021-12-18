@@ -1,16 +1,10 @@
 .home {
   background-image: url(/assets/images/pages/home/bg.png);
   background-position-x: center;
-  background-size: cover;
+  background-size: 1920px 3840px;
   background-repeat: repeat-y;
   &-section-bg {
     @apply relative;
-  }
-
-  &-text-gradient {
-    background: linear-gradient(to bottom, #662e1c, #af4425);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
   &-heading {

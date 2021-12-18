@@ -7,7 +7,7 @@ import GameConceptSection from './components/GameConceptSection';
 import RoadmapSection from './components/RoadmapSection';
 import TokenomicSection from './components/TokenomicSection';
 import TeamSection from './components/TeamSection';
-
+import Footer from './components/Footer';
 export default function Home() {
   return (
     <>
@@ -25,9 +25,7 @@ export default function Home() {
         <RoadmapSection id="roadmap" className="mb-36" />
         <TokenomicSection id="tokenomic" className="mb-48" />
         <TeamSection id="team" className="mb-24" />
-        <footer className="bg-black text-secondary1 text-center p-4">
-          Copyright 2021 © Lost Dungeon
-        </footer>
+        <Footer />
       </div>
     </>
   );
