@@ -3,9 +3,6 @@
   background-position-x: center;
   background-size: 1920px 3840px;
   background-repeat: repeat-y;
-  &-section-bg {
-    @apply relative;
-  }
 
   &-heading {
     @apply font-soup  text-secondary1 text-center inline-block uppercase;
