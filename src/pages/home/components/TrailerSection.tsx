@@ -10,7 +10,7 @@ const TrailerSection = ({ id, className }: IProps) => (
     <div className="w-full flex flex-col items-center">
       <div className="w-full max-w-5xl">
         <h2 className="mb-5 font-soup text-2xl">GAME TRAILER</h2>
-        <div className="aspect-w-16 aspect-h-9 w-full mb-24">
+        <div className="aspect-w-16 aspect-h-9 w-full mb-24 home-video-mask">
           <iframe
             src="https://www.youtube.com/embed/v924Wam83Dk"
             title="Lost Dungeon"

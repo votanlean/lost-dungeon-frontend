@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const Header = () => {
   return (
-    <div className="flex justify-between items-center h-24 bg-secondary1 w-full px-8  z-10">
+    <div className="flex justify-between items-center h-24 bg-secondary1 w-full px-8">
       <Image
         src="/assets/images/logo-large.png"
         alt="logo"
@@ -38,9 +38,9 @@ const Header = () => {
       </nav>
       <button
         type="button"
-        className="bg-main2 hover:bg-main1 h-11 w-48 text-white font-bold text-xl"
+        className="bg-main2 hover:bg-main1 h-11 w-48 text-white text-xl font-soup"
       >
-        Connect
+        MARKETPLACE
       </button>
     </div>
   );

@@ -12,7 +12,7 @@ const IntroSection = ({ id, className }: IProps) => (
       <div className="frame-stone p-12 max-w-7xl">
         <div className="frame-paper py-28 px-32">
           <ul className="list-disc text-main2 text-2xl">
-            <li>
+            <li className="mb-4">
               Welcome to Lost Dungeon
               <br />
               Lost Dungeon (LDC) is a Play-to-Earn NFT RPG game developed on the Binance Smart Chain
@@ -20,7 +20,7 @@ const IntroSection = ({ id, className }: IProps) => (
               Assets are player-owned NFTs minted in the ERC-721 standard which may be traded on the
               proprietary marketplace.
             </li>
-            <li>
+            <li className="mb-4">
               Vision and mission statement
               <br />
               Our vision is for everyone, of any age, to enjoy their time playing our games and get

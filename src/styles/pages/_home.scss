@@ -4,6 +4,13 @@
   background-size: 1920px 3840px;
   background-repeat: repeat-y;
 
+  &-video-mask {
+    -webkit-mask-image: url(/assets/images/pages/home/trailer-video-mask.png);
+    mask-image: url(/assets/images/pages/home/trailer-video-mask.png);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
   &-heading {
     @apply font-soup  text-secondary1 text-center inline-block uppercase;
     background-image: url(/assets/images/button-frame.png);

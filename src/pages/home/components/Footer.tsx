@@ -69,8 +69,8 @@ const Footer = () => (
           </form>
         </div>
       </div>
-      <div className="bg-black text-secondary1 text-center p-4 border-t border-t-white border-opacity-50">
-        Copyright 2021 © Lost Dungeon
+      <div className="font-semibold text-gray-400 text-center text-[13px] p-4 border-t border-t-white border-opacity-50">
+        Copyright @Lost Dungeon 2021
       </div>
     </div>
   </footer>
