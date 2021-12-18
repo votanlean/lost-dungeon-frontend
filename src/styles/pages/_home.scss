@@ -1,28 +1,27 @@
 .home {
-  &-section-bg {
-    @apply bg-no-repeat bg-cover bg-center;
-  }
+  background-image: url(/assets/images/pages/home/bg.png);
+  background-position-x: center;
+  background-size: 1920px 3840px;
+  background-repeat: repeat-y;
 
-  &-text-gradient {
-    background: linear-gradient(to bottom, #662e1c, #af4425);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  &-bg-1 {
-    background-image: url(/assets/images/pages/home/bg1.jpeg);
-  }
-  &-bg-2 {
-    background-image: url(/assets/images/pages/home/bg2.jpeg);
+  &-video-mask {
+    -webkit-mask-image: url(/assets/images/pages/home/trailer-video-mask.png);
+    mask-image: url(/assets/images/pages/home/trailer-video-mask.png);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
   }
 
   &-heading {
-    @apply font-soup text-4xl sm:text-6xl text-secondary1 text-center inline-block px-20 py-10 uppercase;
+    @apply font-soup  text-secondary1 text-center inline-block uppercase;
     background-image: url(/assets/images/button-frame.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    min-width: 360px;
+    height: 120px;
+    line-height: 120px;
+    font-size: 2.5rem;
   }
   &-content {
-    @apply max-w-5xl mx-auto;
+    @apply mx-auto relative;
   }
 }
