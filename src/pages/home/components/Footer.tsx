@@ -1,5 +1,8 @@
 import Image from 'next/image';
 import IconSend from './icon-send.svg';
+
+import { LINK_DISCORD, LINK_FACEBOOK, LINK_TELEGRAM, LINK_TWITTER } from 'src/constants';
+
 const Footer = () => (
   <footer className="px-8">
     <div className="w-full max-w-screen-2xl mx-auto">
@@ -43,16 +46,16 @@ const Footer = () => (
         <div className="text-[13px] font-semibold">
           <p className="mb-6 text-yellow-400">COMMUNITY &amp; SOCIAL CHANNELS</p>
           <div className="flex flex-row gap-8 mb-16">
-            <a href="#" className="hover:scale-110">
+            <a href={LINK_TELEGRAM} target="__blank" className="hover:scale-110">
               <Image src="/assets/images/icon-telegram.png" width={52} height={52} alt="telegram" />
             </a>
-            <a href="#" className="hover:scale-110">
+            <a href={LINK_DISCORD} target="__blank" className="hover:scale-110">
               <Image src="/assets/images/icon-discord.png" width={52} height={52} alt="discord" />
             </a>
-            <a href="#" className="hover:scale-110">
+            <a href={LINK_TWITTER} target="__blank" className="hover:scale-110">
               <Image src="/assets/images/icon-twitter.png" width={52} height={52} alt="twitter" />
             </a>
-            <a href="#" className="hover:scale-110">
+            <a href={LINK_FACEBOOK} target="__blank" className="hover:scale-110">
               <Image src="/assets/images/icon-facebook.png" width={52} height={52} alt="facebook" />
             </a>
           </div>
