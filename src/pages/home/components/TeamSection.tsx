@@ -8,8 +8,8 @@ interface IProps {
 const TeamSection = ({ id, className }: IProps) => (
   <section id={id} className={className}>
     <div className="w-full px-8 flex flex-col items-center">
-      <h2 className="home-heading mx-auto mb-36">TEAM</h2>
-      <div className="w-full max-w-7xl flex flex-row justify-between">
+      <h2 className="home-heading mx-auto mb-16 md:mb-36">TEAM</h2>
+      <div className="w-full max-w-7xl flex flex-col md:flex-row flex-wrap md:flex-nowrap items-center gap-12 md:justify-between">
         {TEAM_DATA.map(({ avatar, name, title, experiences }, index) => (
           <Member avatar={avatar} name={name} title={title} experiences={experiences} key={index} />
         ))}
