@@ -52,15 +52,18 @@ const Milestone = ({ milestone, className, style }: IMilestone) => {
   );
 };
 
-const ROADMAP_DATA = [
+export const ROADMAP_DATA = [
   {
+    name: 'Team setup',
     items: ['Build Game Concept', 'Design Characters', 'Build Marketing Campaign & Community'],
   },
   {
+    name: 'Phase 1',
     time: '11/2021',
     items: ['Lite Paper & Pitch Deck', 'Tokenomic', 'Lite Website', 'Smart Contract'],
   },
   {
+    name: 'Phase 2',
     time: '12/2021',
     items: [
       'Token Audit',
@@ -73,6 +76,7 @@ const ROADMAP_DATA = [
     ],
   },
   {
+    name: 'Phase 3',
     time: '01/2022',
     items: [
       'IDO',
@@ -85,6 +89,7 @@ const ROADMAP_DATA = [
     ],
   },
   {
+    name: 'Phase 4',
     time: 'Q1/2022',
     items: ['Staking', 'Craft Items', 'Rune Equipment', 'PvP'],
   },

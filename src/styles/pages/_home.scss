@@ -4,6 +4,10 @@
   background-size: 1920px 3840px;
   background-repeat: repeat-y;
 
+  @media (max-width: 768px) {
+    background-size: 200% auto;
+  }
+
   &-video-mask {
     -webkit-mask-image: url(/assets/images/pages/home/trailer-video-mask.png);
     mask-image: url(/assets/images/pages/home/trailer-video-mask.png);
@@ -27,5 +31,15 @@
   }
   &-content {
     @apply mx-auto relative;
+  }
+  &-roadmap-phase {
+    @apply font-soup text-3xl text-center inline-block uppercase;
+    background-image: url(/assets/images/pages/home/roadmap-title-frame.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #b1b9c6;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
   }
 }
