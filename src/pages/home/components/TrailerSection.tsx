@@ -20,14 +20,14 @@ const TrailerSection = ({ id, className }: IProps) => (
           ></iframe>
         </div>
       </div>
-      <div className="max-w-6xl">
+      <div className="w-full max-w-6xl">
         <Image
           src="/assets/images/pages/home/intro.png"
           width={2314}
           height={1846}
-          layout="intrinsic"
+          layout="responsive"
           alt="intro"
-          sizes="1024px"
+          sizes="(min-width: 768px) 1024px, 100vw"
         />
       </div>
     </div>

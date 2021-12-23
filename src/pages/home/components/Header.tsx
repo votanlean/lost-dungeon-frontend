@@ -28,6 +28,7 @@ const Header = () => {
             width={3189}
             height={2592}
             layout="responsive"
+            sizes="80px"
           />
         </div>
         <HiMenu className="md:hidden text-main2" onClick={toggleMenu} />

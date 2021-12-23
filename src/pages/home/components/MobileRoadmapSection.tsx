@@ -37,8 +37,15 @@ const Milestone = ({ icon, milestone }: IMilestoneProps) => {
 
   return (
     <div className="w-60 flex flex-col items-center">
-      <div className="w-32">
-        <Image src={src} width={width} height={height} alt={milestone.name} />
+      <div className="w-32 mb-4">
+        <Image
+          src={src}
+          width={width}
+          height={height}
+          alt={milestone.name}
+          layout="responsive"
+          sizes="128px"
+        />
       </div>
       <div className="home-roadmap-phase mb-4">{name}</div>
       <div className="text-lg mb-2 font-medium">{time}</div>
