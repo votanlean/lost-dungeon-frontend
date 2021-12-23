@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import IconSend from './icon-send.svg';
 
-import { LINK_DISCORD, LINK_FACEBOOK, LINK_TELEGRAM, LINK_TWITTER } from 'src/constants';
+import { LINK_DISCORD, LINK_FACEBOOK, LINK_TELEGRAM, LINK_TWITTER } from 'utils/constants';
 
 const Footer = () => (
   <footer className="px-8">
     <div className="w-full max-w-screen-2xl mx-auto">
-      <div className="border-t border-t-white border-opacity-50 flex flex-row items-center justify-between px-4 py-8">
-        <div className="w-96">
+      <div className="border-t border-t-white border-opacity-50 flex flex-col md:flex-row gap-10 md:items-center justify-between md:px-4 py-8">
+        <div className="w-40 md:w-96 self-center">
           <Image
             src="/assets/images/logo.png"
             width={3189}
@@ -36,8 +36,8 @@ const Footer = () => (
               <a href="#">FAQs</a>
             </li>
           </ul>
-          <div>
-            <div className="text-yellow-400 inline-block mr-20">CONTACT US:</div>
+          <div className="flex flex-row justify-between">
+            <div className="text-yellow-400 inline-block mr-8">CONTACT US:</div>
             <a href="mailto:hello@lostdungeon.io" className="text-white">
               hello@lostdungeon.io
             </a>
@@ -61,7 +61,7 @@ const Footer = () => (
           </div>
 
           <p className="mb-6 text-yellow-400">JOIN NEWSLETTER</p>
-          <form className="border border-gray-300 w-full min-w-[500px] flex flex-row p-6 gap-2">
+          <form className="border border-gray-300 w-full md:min-w-[500px] flex flex-row p-6 gap-2">
             <input
               placeholder="Enter your email"
               className="bg-transparent focus:outline-none w-full text-white"

@@ -1,17 +1,17 @@
 import { classnames, TArg } from 'tailwindcss-classnames';
-
+import clsx from 'clsx';
 interface IProps {
   id: string;
-  className?: TArg;
+  className?: string;
 }
 
 const IntroSection = ({ id, className }: IProps) => (
-  <section id={id} className={classnames('mt-20', className)}>
-    <div className="w-full px-8 flex flex-col items-center">
-      <h2 className="home-heading mx-auto mb-28">INTRODUCTION</h2>
-      <div className="frame-stone p-12 max-w-7xl">
-        <div className="frame-paper py-28 px-32">
-          <ul className="list-disc text-main2 text-2xl">
+  <section id={id} className={clsx('mt-20', className)}>
+    <div className="w-full px-4 flex flex-col items-center">
+      <h2 className="home-heading mx-auto mb-10 md:mb-28">INTRODUCTION</h2>
+      <div className="md:frame-stone md:p-12 max-w-7xl">
+        <div className="frame-paper p-8 pb-12 md:py-28 md:px-32">
+          <ul className="list-disc text-main2 text-sm md:text-2xl">
             <li className="mb-4">
               Welcome to Lost Dungeon
               <br />

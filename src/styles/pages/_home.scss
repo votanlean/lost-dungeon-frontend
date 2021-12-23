@@ -4,6 +4,10 @@
   background-size: 1920px 3840px;
   background-repeat: repeat-y;
 
+  @media (max-width: 768px) {
+    background-size: 200% auto;
+  }
+
   &-video-mask {
     -webkit-mask-image: url(/assets/images/pages/home/trailer-video-mask.png);
     mask-image: url(/assets/images/pages/home/trailer-video-mask.png);
@@ -12,16 +16,30 @@
   }
 
   &-heading {
-    @apply font-soup  text-secondary1 text-center inline-block uppercase;
+    @apply font-soup
+     text-secondary1
+     text-center
+     inline-block
+     uppercase
+     text-[1.75rem] md:text-[2.5rem]
+     h-[80px] md:h-[120px]
+     leading-[80px] md:leading-[120px] 
+     min-w-[240px] md:min-w-[360px];
     background-image: url(/assets/images/button-frame.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    min-width: 360px;
-    height: 120px;
-    line-height: 120px;
-    font-size: 2.5rem;
   }
   &-content {
     @apply mx-auto relative;
+  }
+  &-roadmap-phase {
+    @apply font-soup text-3xl text-center inline-block uppercase;
+    background-image: url(/assets/images/pages/home/roadmap-title-frame.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #b1b9c6;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
   }
 }
