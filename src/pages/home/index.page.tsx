@@ -20,7 +20,7 @@ export default function Home() {
         <title>Lost Dungeon</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Headroom disable={isMobile}>
+      <Headroom>
         <Header />
       </Headroom>
 
