@@ -219,12 +219,6 @@ const theme: ThemeOptions = {
       },
     },
     MuiSelect: {
-      defaultProps: {
-        IconComponent: {
-          type: {},
-          compare: null,
-        },
-      },
       styleOverrides: {
         iconFilled: {
           top: 'calc(50% - .25em)',
@@ -561,14 +555,6 @@ const theme: ThemeOptions = {
       fontSize: '0.75rem',
       lineHeight: 2.66,
       textTransform: 'uppercase',
-    },
-  },
-  nprogress: {
-    color: '#007FFF',
-  },
-  props: {
-    MuiBadge: {
-      overlap: 'rectangular',
     },
   },
   mixins: {
