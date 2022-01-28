@@ -67,7 +67,13 @@ const StyledTitle = styled('h1')(`
   line-height: 110px;
   padding: 0 60px;
   background: url(/assets/images/button-frame.png) no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    height: 80px;
+    line-height: 70px;
+    padding: 0 40px;
+  }
 `);
 
 const StyledHome = styled('div')(`
