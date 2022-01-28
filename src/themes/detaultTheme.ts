@@ -1,4 +1,5 @@
-import { createTheme, ThemeOptions, PaletteOptions } from '@mui/material/styles';
+import { createTheme } from '@mui/material';
+import { ThemeOptions, PaletteOptions } from '@mui/material/styles';
 
 const main1 = '#Af4425';
 const main2 = '#662e1c';
@@ -21,6 +22,15 @@ const theme: ThemeOptions = {
   direction: 'ltr',
   components: {
     MuiCssBaseline: {
+      styleOverrides: `
+       @font-face {
+          font-family: 'soup of justice';
+          font-style: normal;
+          font-weight: 400;
+          src: url('/assets/fonts/iCielSoupofJustice.ttf');
+        }
+      
+      `,
       defaultProps: {
         enableColorScheme: true,
       },
