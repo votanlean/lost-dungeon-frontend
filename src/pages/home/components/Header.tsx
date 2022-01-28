@@ -1,8 +1,16 @@
 import { useState } from 'react';
+
+import clsx from 'clsx';
+import { Box, Theme, useTheme, Link } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/system';
 import Image from 'next/image';
 import { HiMenu } from 'react-icons/hi';
 import useIsMobile from 'utils/hooks/useIsMobile';
+import { mobileMediaQuery } from 'utils/common/mediaQueries';
+
 const Header = () => {
+  const theme = useTheme();
   const isMobile = useIsMobile();
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
 
@@ -19,9 +27,29 @@ const Header = () => {
   const showMenu = !isMobile || isOpenMenu;
 
   return (
-    <div className="flex flex-col md:flex-row md:justify-between md:items-center md:h-24 bg-secondary1 w-full px-8">
-      <div className="flex flex-row justify-between items-center w-full md:w-auto py-4 md:py-0">
-        <div className="w-14 md:w-20">
+    <Box
+      className="bg-secondary1"
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', md: 'row' },
+        justifyContent: { md: 'space-between' },
+        alignItems: { md: 'center' },
+        height: { xs: 'auto', md: 96 },
+        width: '100%',
+        px: 4,
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          width: { xs: '100%', md: 'auto' },
+          py: { xs: 2, md: 0 },
+        }}
+      >
+        <Box sx={{ width: { xs: 56, md: 80 } }}>
           <Image
             src="/assets/images/logo.png"
             alt="logo"
@@ -30,47 +58,80 @@ const Header = () => {
             layout="responsive"
             sizes="80px"
           />
-        </div>
-        <HiMenu className="md:hidden text-main2" onClick={toggleMenu} />
-      </div>
+        </Box>
+        <Box
+          component={HiMenu}
+          sx={{ display: { md: 'none' }, color: 'primary.main' }}
+          onClick={toggleMenu}
+        />
+      </Box>
       {showMenu && (
-        <nav className="flex flex-col md:flex-row gap-4 md:gap-9 text-main2">
-          <a className="hover:text-main1" href="#trailer" onClick={handleClickLink}>
-            Trailer
-          </a>
-          <a className="hover:text-main1" href="#introduction" onClick={handleClickLink}>
-            Introduction
-          </a>
-          <a className="hover:text-main1" href="#game-concept" onClick={handleClickLink}>
-            Game Concept
-          </a>
-          <a className="hover:text-main1" href="#roadmap" onClick={handleClickLink}>
-            Roadmap
-          </a>
-          <a className="hover:text-main1" href="#tokenomic" onClick={handleClickLink}>
-            Tokenomic
-          </a>
-          <a className="hover:text-main1" href="#team" onClick={handleClickLink}>
-            Team
-          </a>
-          <a className="hover:text-main1" href="#pitch-deck" onClick={handleClickLink}>
-            Pitch Deck
-          </a>
-          <a className="hover:text-main1" href="#document" onClick={handleClickLink}>
-            Document
-          </a>
-        </nav>
-      )}
-      {showMenu && (
-        <button
-          type="button"
-          className="md:block bg-main2 hover:bg-main1 h-11 w-full md:w-48 text-white text-xl font-soup my-8 md:my-0"
+        <Box
+          component="nav"
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: { xs: 2, md: 4.5 },
+          }}
         >
-          MARKETPLACE
-        </button>
+          <HeaderLink href="#trailer" onClick={handleClickLink}>
+            Trailer
+          </HeaderLink>
+          <HeaderLink href="#introduction" onClick={handleClickLink}>
+            Introduction
+          </HeaderLink>
+          <HeaderLink href="#game-concept" onClick={handleClickLink}>
+            Game Concept
+          </HeaderLink>
+          <HeaderLink href="#roadmap" onClick={handleClickLink}>
+            Roadmap
+          </HeaderLink>
+          <HeaderLink href="#tokenomic" onClick={handleClickLink}>
+            Tokenomic
+          </HeaderLink>
+          <HeaderLink href="#team" onClick={handleClickLink}>
+            Team
+          </HeaderLink>
+          <HeaderLink href="#pitch-deck" onClick={handleClickLink}>
+            Pitch Deck
+          </HeaderLink>
+          <HeaderLink href="#document" onClick={handleClickLink}>
+            Document
+          </HeaderLink>
+        </Box>
       )}
-    </div>
+      {showMenu && <MarketplaceButton>Marketplace</MarketplaceButton>}
+    </Box>
   );
 };
+
+const HeaderLink = styled(Link)(
+  ({ theme }) => `
+  color: ${theme.palette.primary.main};
+  &:hover {
+    color: ${theme.palette.primary.light};
+  }
+`
+);
+
+const MarketplaceButton = styled('button')(
+  ({ theme }) => `
+  display: block;
+  height: 44px;
+  width: 192px;
+  font-size: 1.25rem;
+  margin: 0;
+  text-transform: uppercase;
+  background-color: ${theme.palette.primary.main};
+  &:hover {
+    background-color: ${theme.palette.primary.light};
+  }
+  ${theme.breakpoints.down('md')} {
+    display: inline;
+    width: 100%;
+    margin: ${theme.spacing(2, 0)};
+  }
+`
+);
 
 export default Header;
