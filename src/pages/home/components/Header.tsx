@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
 import clsx from 'clsx';
-import { Box, Theme, useTheme, Link } from '@mui/material';
+import { Box, useTheme, Link } from '@mui/material';
+import { Theme, styled } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
-import { styled } from '@mui/system';
+// import { styled } from '@mui/system';
 import Image from 'next/image';
 import { HiMenu } from 'react-icons/hi';
 import useIsMobile from 'utils/hooks/useIsMobile';
@@ -105,33 +106,38 @@ const Header = () => {
   );
 };
 
-const HeaderLink = styled(Link)(
-  ({ theme }) => `
-  color: ${theme.palette.primary.main};
-  &:hover {
-    color: ${theme.palette.primary.light};
-  }
-`
-);
+// const HeaderLink = styled(Link)(
+//   ({ theme }) => `
+//   color: ${theme.palette.primary.main};
+//   &:hover {
+//     color: ${theme.palette.primary.light};
+//   }
+// `
+// );
 
-const MarketplaceButton = styled('button')(
-  ({ theme }) => `
-  display: block;
-  height: 44px;
-  width: 192px;
-  font-size: 1.25rem;
-  margin: 0;
-  text-transform: uppercase;
-  background-color: ${theme.palette.primary.main};
-  &:hover {
-    background-color: ${theme.palette.primary.light};
-  }
-  ${theme.breakpoints.down('md')} {
-    display: inline;
-    width: 100%;
-    margin: ${theme.spacing(2, 0)};
-  }
-`
-);
+const HeaderLink = styled(Link)(({ theme }) => ({
+  color: theme.palette.primary.main,
+  '&:hover': {
+    color: theme.palette.primary.light,
+  },
+}));
+
+const MarketplaceButton = styled('button')(({ theme }) => ({
+  display: 'block',
+  height: 44,
+  width: 192,
+  fontSize: '1.25rem',
+  margin: 0,
+  textTransform: 'uppercase',
+  backgroundColor: theme.palette.primary.main,
+  '&:hover': {
+    backgroundColor: theme.palette.primary.light,
+  },
+  [theme.breakpoints.down('md')]: {
+    display: 'inline',
+    width: 1,
+    margin: theme.spacing(2, 0),
+  },
+}));
 
 export default Header;
