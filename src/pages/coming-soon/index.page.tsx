@@ -1,9 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Headroom from 'react-headroom';
-import { Box, Theme, Typography, Link } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-import { styled } from '@mui/system';
+import { Box, Link, styled } from '@mui/material';
 
 import useIsMobile from 'utils/hooks/useIsMobile';
 
@@ -13,7 +11,6 @@ export default function Home() {
     <>
       <Head>
         <title>Lost Dungeon</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <StyledHome>
         <StyledVideoMask sx={{ mx: 'auto', mb: 5 }}>
@@ -28,12 +25,12 @@ export default function Home() {
           ></iframe>
         </StyledVideoMask>
         <Box sx={{ mb: 5, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <StyledTitle sx={{ mb: 3 }}>COMING SOON</StyledTitle>
+          <StyledTitle sx={{ mb: 3 }}>Coming Soon</StyledTitle>
           <Link
             underline="always"
             sx={{
-              color: 'primary.light',
-              '&:hover': { color: 'primary.main' },
+              color: 'colors.main2',
+              '&:hover': { color: 'colors.main1' },
               fontSize: '1.5rem',
             }}
             href="https://docsend.com/view/v7uf3ihc9yqagiyg"
@@ -57,36 +54,39 @@ export default function Home() {
   );
 }
 
-const StyledTitle = styled('h1')(`
-  font-family: 'soup of justice';
-  text-align: center;
-  display: inline-block;
-  text-transform: uppercase;
-  font-size: 2.5rem;
-  height: 120px;
-  line-height: 110px;
-  padding: 0 60px;
-  background: url(/assets/images/button-frame.png) no-repeat;
-  background-size: 100% 100%;
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    height: 80px;
-    line-height: 70px;
-    padding: 0 40px;
-  }
-`);
+const StyledTitle = styled('h1')(({ theme }) => ({
+  fontFamily: 'soup of justice',
+  textAlign: 'center',
+  display: 'inline-block',
+  textTransform: 'uppercase',
+  fontSize: theme.typography.pxToRem(40),
+  height: 120,
+  lineHeight: '110px',
+  padding: theme.spacing(0, 8),
+  background: 'url(/assets/images/button-frame.png)',
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: '100% 100%',
+  color: theme.palette.colors.secondary1,
+  [theme.breakpoints.down('md')]: {
+    fontSize: theme.typography.pxToRem(32),
+    height: 80,
+    lineHeight: '80px',
+    padding: theme.spacing(0, 5),
+  },
+}));
 
-const StyledHome = styled('div')(`
-  padding: 40px 40px 80px;
-  background: url(/assets/images/pages/home/bg-stars.jpg) repeat;
-`);
+const StyledHome = styled('div')(({ theme }) => ({
+  padding: theme.spacing(5, 5, 10),
+  background: 'url(/assets/images/pages/home/bg-stars.jpg)',
+  backgroundRepeat: 'repeat',
+}));
 
-const StyledVideoMask = styled('div')(`
-  -webkit-mask-image: url(/assets/images/pages/home/trailer-video-mask.png);
-  mask-image: url(/assets/images/pages/home/trailer-video-mask.png);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat; 
-  aspect-ratio: 16 / 9;
-  max-width: 768px;
-  width: 100%;
-`);
+const StyledVideoMask = styled('div')(({ theme }) => ({
+  width: '100%',
+  maxWidth: 768,
+  aspectRatio: '16 / 9',
+  WebkitMaskImage: 'url(/assets/images/pages/home/trailer-video-mask.png)',
+  maskImage: 'url(/assets/images/pages/home/trailer-video-mask.png)',
+  maskRepeat: 'no-repeat',
+  WebkitMaskRepeat: 'no-repeat',
+}));

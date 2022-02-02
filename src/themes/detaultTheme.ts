@@ -1,13 +1,37 @@
-import { createTheme } from '@mui/material';
+import { createTheme, Theme } from '@mui/material';
 import { ThemeOptions, PaletteOptions } from '@mui/material/styles';
 
-const main1 = '#Af4425';
-const main2 = '#662e1c';
-const main3 = '#011a27';
-const main4 = '#063825';
-const secondary1 = '#Ebdcb2';
+const colors = {
+  main1: '#Af4425',
+  main2: '#662e1c',
+  main3: '#011a27',
+  main4: '#063825',
+  secondary1: '#Ebdcb2',
+};
 
-const theme: ThemeOptions = {
+declare module '@mui/material/styles' {
+  interface Palette {
+    colors: {
+      main1: string;
+      main2: string;
+      main3: string;
+      main4: string;
+      secondary1: string;
+    };
+  }
+
+  interface PaletteOptions {
+    colors?: {
+      main1?: string;
+      main2?: string;
+      main3?: string;
+      main4?: string;
+      secondary1?: string;
+    };
+  }
+}
+
+const theme = createTheme({
   breakpoints: {
     keys: ['xs', 'sm', 'md', 'lg', 'xl'],
     values: {
@@ -352,17 +376,14 @@ const theme: ThemeOptions = {
     },
   },
   palette: {
-    mode: 'light',
+    colors,
     primary: {
-      main: main2,
-      light: main1,
+      main: colors.main2,
+      light: colors.main1,
       dark: '#0059B2',
-      contrastText: secondary1,
+      contrastText: colors.secondary1,
     },
     divider: '#E7EBF0',
-    primary2: {
-      main: '#662e1c',
-    },
     common: {
       black: '#1D1D1D',
       white: '#fff',
@@ -451,7 +472,6 @@ const theme: ThemeOptions = {
       fontSize: 'clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem)',
       fontWeight: 800,
       lineHeight: 1.1142857142857143,
-      color: '#0A1929',
     },
     h2: {
       fontFamily:
@@ -459,7 +479,6 @@ const theme: ThemeOptions = {
       fontSize: 'clamp(1.5rem, 0.9643rem + 1.4286vw, 2.25rem)',
       fontWeight: 800,
       lineHeight: 1.2222222222222223,
-      color: '#132F4C',
     },
     h3: {
       fontFamily:
@@ -483,7 +502,6 @@ const theme: ThemeOptions = {
       fontSize: '1.5rem',
       lineHeight: 1.5,
       letterSpacing: 0.1,
-      color: '#007FFF',
       fontWeight: 400,
     },
     h6: {
@@ -621,25 +639,6 @@ const theme: ThemeOptions = {
     snackbar: 1400,
     tooltip: 1500,
   },
-};
+});
 
-declare module '@mui/material/styles' {
-  interface Theme {
-    palette: {
-      primary2: {
-        main: string;
-      };
-
-      primary3: { main: string };
-      primary4: { main: string };
-    };
-  }
-  // allow configuration using `createTheme`
-  interface PaletteOptions {
-    primary2?: { main: string };
-    primary3?: { main: string };
-    primary4?: { main: string };
-  }
-}
-
-export default createTheme(theme);
+export default theme;
