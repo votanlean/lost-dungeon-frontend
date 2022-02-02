@@ -472,7 +472,6 @@ const theme = createTheme({
       fontSize: 'clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem)',
       fontWeight: 800,
       lineHeight: 1.1142857142857143,
-      color: '#0A1929',
     },
     h2: {
       fontFamily:
@@ -480,7 +479,6 @@ const theme = createTheme({
       fontSize: 'clamp(1.5rem, 0.9643rem + 1.4286vw, 2.25rem)',
       fontWeight: 800,
       lineHeight: 1.2222222222222223,
-      color: '#132F4C',
     },
     h3: {
       fontFamily:
@@ -504,7 +502,6 @@ const theme = createTheme({
       fontSize: '1.5rem',
       lineHeight: 1.5,
       letterSpacing: 0.1,
-      color: '#007FFF',
       fontWeight: 400,
     },
     h6: {

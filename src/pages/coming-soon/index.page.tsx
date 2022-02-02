@@ -66,6 +66,7 @@ const StyledTitle = styled('h1')(({ theme }) => ({
   background: 'url(/assets/images/button-frame.png)',
   backgroundRepeat: 'no-repeat',
   backgroundSize: '100% 100%',
+  color: theme.palette.colors.secondary1,
   [theme.breakpoints.down('md')]: {
     fontSize: theme.typography.pxToRem(32),
     height: 80,
