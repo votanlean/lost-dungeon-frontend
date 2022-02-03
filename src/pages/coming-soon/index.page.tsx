@@ -4,6 +4,8 @@ import NextLink from 'next/link';
 import { Box, Link, styled } from '@mui/material';
 
 export default function Home() {
+  const a = 1;
+
   return (
     <>
       <Head>
