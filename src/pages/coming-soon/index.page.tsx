@@ -1,12 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import Headroom from 'react-headroom';
+import NextLink from 'next/link';
 import { Box, Link, styled } from '@mui/material';
 
-import useIsMobile from 'utils/hooks/useIsMobile';
-
 export default function Home() {
-  const isMobile = useIsMobile();
   return (
     <>
       <Head>
@@ -22,22 +19,23 @@ export default function Home() {
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-          ></iframe>
+          />
         </StyledVideoMask>
         <Box sx={{ mb: 5, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <StyledTitle sx={{ mb: 3 }}>Coming Soon</StyledTitle>
-          <Link
-            underline="always"
-            sx={{
-              color: 'colors.main2',
-              '&:hover': { color: 'colors.main1' },
-              fontSize: '1.5rem',
-            }}
-            href="https://docsend.com/view/v7uf3ihc9yqagiyg"
-            target="__blank"
-          >
-            Check out the pitch deck
-          </Link>
+          <NextLink href="https://docsend.com/view/v7uf3ihc9yqagiyg" passHref>
+            <Link
+              underline="always"
+              sx={{
+                color: 'colors.main2',
+                '&:hover': { color: 'colors.main1' },
+                fontSize: '1.5rem',
+              }}
+              target="__blank"
+            >
+              Check out the pitch deck
+            </Link>
+          </NextLink>
         </Box>
         <Box sx={{ width: '100%', maxWidth: 768, mx: 'auto' }}>
           <Image
@@ -81,7 +79,7 @@ const StyledHome = styled('div')(({ theme }) => ({
   backgroundRepeat: 'repeat',
 }));
 
-const StyledVideoMask = styled('div')(({ theme }) => ({
+const StyledVideoMask = styled('div')({
   width: '100%',
   maxWidth: 768,
   aspectRatio: '16 / 9',
@@ -89,4 +87,4 @@ const StyledVideoMask = styled('div')(({ theme }) => ({
   maskImage: 'url(/assets/images/pages/home/trailer-video-mask.png)',
   maskRepeat: 'no-repeat',
   WebkitMaskRepeat: 'no-repeat',
-}));
+});
