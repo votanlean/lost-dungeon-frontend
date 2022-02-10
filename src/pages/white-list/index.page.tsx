@@ -6,25 +6,18 @@ import { useWeb3React } from '@web3-react/core';
 import { injected } from 'components/wallet/connectors';
 
 export default function WhiteList() {
-  const { active, account, library, connector, activate, deactivate } = useWeb3React();
+  const { active, account, activate, deactivate } = useWeb3React();
 
   const connect = async () => {
     try {
-      activate(injected);
-    } catch (ex) {
-      console.log(ex);
+      await activate(injected);
+    } catch (error) {
+      // TODO: handle error properly
+      console.error('Error while calling activate()', error);
     }
   };
 
-  const disconnect = async () => {
-    try {
-      deactivate();
-    } catch (ex) {
-      console.log(ex);
-    }
-  };
-
-  const register = async () => {
+  const register = () => {
     alert('register');
   };
   return (
@@ -53,7 +46,7 @@ export default function WhiteList() {
             <Button
               onClick={() => {
                 if (active) {
-                  disconnect();
+                  deactivate();
                 } else {
                   connect();
                 }
@@ -69,10 +62,22 @@ export default function WhiteList() {
             </Button>
           </Box>
         </StyledHeader>
-        <Box sx={{ color: 'white', fontSize: '64px', fontFamily: 'soup of justice' }}>
+        <Box
+          sx={{
+            color: 'white',
+            fontSize: (theme) => theme.typography.pxToRem(64),
+            fontFamily: 'soup of justice',
+          }}
+        >
           Count down for end register:
         </Box>
-        <Box sx={{ color: 'white', fontSize: '64px', fontFamily: 'soup of justice' }}>
+        <Box
+          sx={{
+            color: 'white',
+            fontSize: (theme) => theme.typography.pxToRem(64),
+            fontFamily: 'soup of justice',
+          }}
+        >
           <Countdown date={Date.now() + 100000000} />
         </Box>
         <Button
@@ -100,17 +105,17 @@ const StyledWhiteList = styled('div')(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: '50px 0px',
+  padding: theme.spacing(6, 0),
 }));
 
 const StyledHeader = styled('div')(({ theme }) => ({
   display: 'flex',
-  height: '80px',
+  height: 80,
   justifyContent: 'space-between',
   alignItems: 'center',
-  margin: '30px',
+  margin: theme.spacing(4),
   width: '100%',
-  padding: '0px 50px',
+  padding: theme.spacing(0, 6),
 }));
 
 const StyledTitle = styled('h1')(({ theme }) => ({
