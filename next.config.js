@@ -20,6 +20,10 @@ module.exports = {
         source: '/',
         destination: '/coming-soon',
       },
+      {
+        source: '/white-list',
+        destination: '/white-list',
+      },
     ];
   },
 };
