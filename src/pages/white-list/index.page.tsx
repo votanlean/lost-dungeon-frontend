@@ -2,8 +2,31 @@ import Head from 'next/head';
 import { Box, Button, styled } from '@mui/material';
 import Image from 'next/image';
 import Countdown from 'react-countdown';
+import { injected } from 'components/wallet/connectors';
+import { useWeb3React } from '@web3-react/core';
 
 export default function WhiteList() {
+  const { active, account, library, connector, activate, deactivate } = useWeb3React();
+
+  const connect = async () => {
+    try {
+      activate(injected);
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
+  const disconnect = async () => {
+    try {
+      deactivate();
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
+  const register = async () => {
+    alert('register');
+  };
   return (
     <>
       <Head>
@@ -20,7 +43,31 @@ export default function WhiteList() {
             />
           </Box>
           <StyledTitle sx={{ mb: 3 }}>White list register</StyledTitle>
-          <Button variant="contained">Connect metamask</Button>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Button
+              onClick={() => {
+                if (active) {
+                  disconnect();
+                } else {
+                  connect();
+                }
+              }}
+              variant="contained"
+              sx={{
+                minWidth: '200px',
+              }}
+            >
+              {active
+                ? `${account?.substring(0, 6)}...${account?.substring(account.length - 4)}`
+                : 'Connect metamask'}
+            </Button>
+          </Box>
         </StyledHeader>
         <Box sx={{ color: 'white', fontSize: '64px', fontFamily: 'soup of justice' }}>
           Count down for end register:
@@ -28,7 +75,18 @@ export default function WhiteList() {
         <Box sx={{ color: 'white', fontSize: '64px', fontFamily: 'soup of justice' }}>
           <Countdown date={Date.now() + 100000000} />
         </Box>
-        <Button variant="contained">Register</Button>
+        <Button
+          onClick={() => {
+            if (active) {
+              register();
+            } else {
+              connect();
+            }
+          }}
+          variant="contained"
+        >
+          {active ? 'Register' : 'Connect metamask'}
+        </Button>
       </StyledWhiteList>
     </>
   );

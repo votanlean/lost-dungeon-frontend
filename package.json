@@ -17,6 +17,8 @@
     "@mui/material": "^5.3.1",
     "@mui/styles": "^5.3.0",
     "@types/react-headroom": "^2.2.2",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/injected-connector": "^6.0.7",
     "classnames": "^2.3.1",
     "next": "latest",
     "react": "^17.0.2",
@@ -24,7 +26,9 @@
     "react-dom": "^17.0.2",
     "react-headroom": "^3.2.0",
     "react-icons": "^4.3.1",
-    "react-responsive": "^9.0.0-beta.5"
+    "react-responsive": "^9.0.0-beta.5",
+    "web3": "^1.7.0",
+    "web3-react": "^5.0.5"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.0.10",
