@@ -6,7 +6,7 @@
     "start": "next start",
     "lint": "next lint",
     "eslint": "eslint './src/**/*.{js,ts,tsx}'",
-    "eslint:fix": "eslint './src/**/*.{js,ts,tsx}' --quiet --fix",
+    "eslint:fix": "eslint './src/**/*.{js,ts,tsx}' --fix",
     "prettier": "prettier --write",
     "husky:install": "husky install"
   },

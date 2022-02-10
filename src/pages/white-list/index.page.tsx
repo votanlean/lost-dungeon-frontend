@@ -2,8 +2,8 @@ import Head from 'next/head';
 import { Box, Button, styled } from '@mui/material';
 import Image from 'next/image';
 import Countdown from 'react-countdown';
-import { injected } from 'components/wallet/connectors';
 import { useWeb3React } from '@web3-react/core';
+import { injected } from 'components/wallet/connectors';
 
 export default function WhiteList() {
   const { active, account, library, connector, activate, deactivate } = useWeb3React();
