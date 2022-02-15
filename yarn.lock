@@ -7835,6 +7835,11 @@ pify@^2.3.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
   integrity sha1-7RQaasBDqEnqWISY59yosVMw6Qw=
 
+playfab-sdk@^2.81.220118:
+  version "2.81.220118"
+  resolved "https://registry.yarnpkg.com/playfab-sdk/-/playfab-sdk-2.81.220118.tgz#e3bbedf3d393d9ecbcd694df31044d3752490e79"
+  integrity sha512-bxlPUm7EK0QEFwa81Q87VWhH217VKKUwA1qzFnMJpUUXh/sEMlFks0+7aCTA9IUmJSBSwCi9h1gpfG0CFF0CCQ==
+
 popper.js@1.14.3:
   version "1.14.3"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.3.tgz#1438f98d046acf7b4d78cd502bf418ac64d4f095"

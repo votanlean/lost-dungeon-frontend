@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Countdown from 'react-countdown';
 import { useWeb3React } from '@web3-react/core';
 import { injected } from 'components/wallet/connectors';
+import { StyledHeader } from 'components/layout/index';
 
 export default function WhiteList() {
   const { active, account, activate, deactivate } = useWeb3React();
@@ -18,7 +19,7 @@ export default function WhiteList() {
   };
 
   const register = () => {
-    alert('register');
+    // alert('register');
   };
   return (
     <>
@@ -106,16 +107,6 @@ const StyledWhiteList = styled('div')(({ theme }) => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: theme.spacing(6, 0),
-}));
-
-const StyledHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  height: 80,
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  margin: theme.spacing(4),
-  width: '100%',
-  padding: theme.spacing(0, 6),
 }));
 
 const StyledTitle = styled('h1')(({ theme }) => ({

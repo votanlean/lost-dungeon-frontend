@@ -1,5 +1,5 @@
-import { createTheme, Theme } from '@mui/material';
-import { ThemeOptions, PaletteOptions } from '@mui/material/styles';
+import { createTheme } from '@mui/material';
+import {} from '@mui/material/styles';
 
 const colors = {
   main1: '#Af4425',
