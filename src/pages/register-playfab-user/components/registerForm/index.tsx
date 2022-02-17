@@ -42,11 +42,14 @@ export default function RegisterForm() {
       Password: password,
       WalletAdress: account,
     };
-    await PlayFabClient.RegisterPlayFabUser(request, (errors, result) => {
+    PlayFabClient.RegisterPlayFabUser(request, (errors, result) => {
       if (result?.code === 200) {
         setNotify('Register Success!');
       } else {
-        setNotify(Object.values(errors.errorDetails)[0][0]);
+        const errorObj = errors.errorDetails;
+        if (errorObj) {
+          setNotify(Object.values(errorObj)[0][0]);
+        }
       }
     });
   };
