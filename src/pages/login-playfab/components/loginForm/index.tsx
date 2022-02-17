@@ -1,54 +1,55 @@
 import { useForm } from 'react-hook-form';
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import * as yup from 'yup';
 import { PlayFabClient } from 'playfab-sdk';
-import { useWeb3React } from '@web3-react/core';
+import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import InputField from '../InputField';
 
-export default function RegisterForm() {
-  const { account } = useWeb3React();
-
+export default function LoginForm() {
+  const [notify, setNotify] = useState('');
   const schema = yup
     .object()
     .shape({
-      email: yup.string().required().email(),
       userName: yup.string().min(3).max(20).required(),
       password: yup.string().min(6).max(100).required(),
-      confirmPassword: yup.string().oneOf([yup.ref('password'), null]),
     })
     .required();
   const form = useForm({
     resolver: yupResolver(schema),
-
     defaultValues: {
-      email: '',
       userName: '',
       password: '',
-      confirmPassword: '',
     },
   });
 
   const onSubmit = async (data: any) => {
-    const { email, userName, password } = data;
+    const { userName, password } = data;
     const request = {
       TitleId: '2DC90',
       titleId: '2DC90',
-      Email: email,
       Username: userName,
       Password: password,
-      WalletAdress: account,
     };
-    await PlayFabClient.RegisterPlayFabUser(request, () => {});
+    await PlayFabClient.LoginWithPlayFab(request, (errors, result) => {
+      if (result?.code === 200) {
+        setNotify('Login Success!');
+      } else {
+        setNotify(errors.errorMessage);
+      }
+    });
   };
 
   return (
     <StyledForm onSubmit={form.handleSubmit(onSubmit)}>
-      <InputField name="email" label="Email :" form={form} />
       <InputField name="userName" label="User name :" form={form} />
       <InputField name="password" type="password" label="Password :" form={form} />
-      <InputField name="confirmPassword" type="password" label="Confirm password :" form={form} />
       <StyledSubmitInput type="submit" />
+      {notify === 'Login Success!' ? (
+        <Box sx={{ color: 'success.main' }}>{notify}</Box>
+      ) : (
+        <Box sx={{ color: 'error.main' }}>{notify}</Box>
+      )}
     </StyledForm>
   );
 }
