@@ -3,20 +3,11 @@ import { Box, Button, styled } from '@mui/material';
 import Image from 'next/image';
 import Countdown from 'react-countdown';
 import { useWeb3React } from '@web3-react/core';
-import { injected } from 'components/wallet/connectors';
+import { connect } from 'components/wallet/action';
 import { StyledHeader } from 'components/layout/index';
 
 export default function WhiteList() {
   const { active, account, activate, deactivate } = useWeb3React();
-
-  const connect = async () => {
-    try {
-      await activate(injected);
-    } catch (error) {
-      // TODO: handle error properly
-      console.error('Error while calling activate()', error);
-    }
-  };
 
   const register = () => {
     // alert('register');
@@ -49,7 +40,7 @@ export default function WhiteList() {
                 if (active) {
                   deactivate();
                 } else {
-                  connect();
+                  connect(activate);
                 }
               }}
               variant="contained"
@@ -86,7 +77,7 @@ export default function WhiteList() {
             if (active) {
               register();
             } else {
-              connect();
+              connect(activate);
             }
           }}
           variant="contained"
