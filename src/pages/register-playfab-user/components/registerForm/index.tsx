@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form';
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import * as yup from 'yup';
+import { useState } from 'react';
+
 import { PlayFabClient } from 'playfab-sdk';
 import { useWeb3React } from '@web3-react/core';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,6 +10,7 @@ import InputField from '../InputField';
 
 export default function RegisterForm() {
   const { account } = useWeb3React();
+  const [notify, setNotify] = useState('');
 
   const schema = yup
     .object()
@@ -39,7 +42,13 @@ export default function RegisterForm() {
       Password: password,
       WalletAdress: account,
     };
-    await PlayFabClient.RegisterPlayFabUser(request, () => {});
+    await PlayFabClient.RegisterPlayFabUser(request, (errors, result) => {
+      if (result?.code === 200) {
+        setNotify('Register Success!');
+      } else {
+        setNotify(Object.values(errors.errorDetails)[0][0]);
+      }
+    });
   };
 
   return (
@@ -49,6 +58,11 @@ export default function RegisterForm() {
       <InputField name="password" type="password" label="Password :" form={form} />
       <InputField name="confirmPassword" type="password" label="Confirm password :" form={form} />
       <StyledSubmitInput type="submit" />
+      {notify === 'Register Success!' ? (
+        <Box sx={{ color: 'success.main' }}>{notify}</Box>
+      ) : (
+        <Box sx={{ color: 'error.main' }}>{notify}</Box>
+      )}
     </StyledForm>
   );
 }
@@ -57,6 +71,7 @@ const StyledForm = styled('form')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   minWidth: theme.typography.pxToRem(700),
+  maxWidth: theme.typography.pxToRem(700),
   justifyContent: 'center',
   border: '1px solid black',
   padding: theme.spacing(8),

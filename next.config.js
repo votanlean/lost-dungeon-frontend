@@ -25,8 +25,12 @@ module.exports = {
         destination: '/white-list',
       },
       {
-        source: '/regist-playfab-user',
-        destination: '/regist-playfab-user',
+        source: '/register-playfab-user',
+        destination: '/register-playfab-user',
+      },
+      {
+        source: '/login-playfab',
+        destination: '/login-playfab',
       },
     ];
   },
