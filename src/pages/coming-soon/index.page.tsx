@@ -1,7 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { Box, styled } from '@mui/material';
+import { Box, Link, styled } from '@mui/material';
+import NextLink from 'next/link';
 
 import Footer from 'components/footer';
 import Characters from './components/characters';
@@ -34,6 +35,23 @@ export default function Home() {
             priority
           />
           <StyledPlayDemoTitle>Play demo</StyledPlayDemoTitle>
+          <Box
+            sx={{
+              width: '300px',
+              height: '120px',
+              position: 'absolute',
+              top: '42%',
+              left: '48%',
+              transform: 'translate(-42%, -48%)',
+              borderRadius: '100px',
+              zIndex: 1,
+              cursor: 'pointer',
+            }}
+          >
+            <NextLink href="/game" passHref>
+              <Link underline="none" sx={{ width: '100%', height: '100%' }} />
+            </NextLink>
+          </Box>
         </Box>
         <StyledBg>
           <Box sx={{ display: 'flex', maxWidth: '1100px', mx: 'auto' }}>
