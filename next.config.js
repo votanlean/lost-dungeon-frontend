@@ -20,18 +20,6 @@ module.exports = {
         source: '/',
         destination: '/coming-soon',
       },
-      {
-        source: '/white-list',
-        destination: '/white-list',
-      },
-      {
-        source: '/regist-playfab-user',
-        destination: '/regist-playfab-user',
-      },
-      {
-        source: '/game',
-        destination: '/game',
-      },
     ];
   },
 };
