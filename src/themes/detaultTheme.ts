@@ -7,6 +7,10 @@ const colors = {
   main3: '#011a27',
   main4: '#063825',
   secondary1: '#Ebdcb2',
+  secondary2: '#F0B83D',
+  white: '#ffffff',
+  white5: 'rgba(255, 255, 255, 0.5)',
+  white3: 'rgba(255, 255, 255, 0.3)',
 };
 
 declare module '@mui/material/styles' {
@@ -17,6 +21,10 @@ declare module '@mui/material/styles' {
       main3: string;
       main4: string;
       secondary1: string;
+      white: string;
+      secondary2: string;
+      white5: string;
+      white3: string;
     };
   }
 

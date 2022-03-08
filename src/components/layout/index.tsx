@@ -1,4 +1,6 @@
+import React from 'react';
 import { styled } from '@mui/material';
+import Footer from 'components/footer';
 
 export const StyledHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -30,3 +32,12 @@ export const StyledTitle = styled('h1')(({ theme }) => ({
     padding: theme.spacing(0, 5),
   },
 }));
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      {children}
+      <Footer />
+    </>
+  );
+}
