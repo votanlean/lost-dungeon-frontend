@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-// const breakpoints = { mobile: 0, desktop: 960 };
-
 const useIsMobile = () => {
   const [isClient, setIsClient] = useState<boolean>(false);
   const isMobile = useMediaQuery({ query: '(max-width: 960px)' });
