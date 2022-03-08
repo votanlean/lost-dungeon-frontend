@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Box, styled } from '@mui/material';
 
+import Footer from 'components/footer';
 import Characters from './components/characters';
 import Items from './components/items';
 
@@ -155,6 +156,7 @@ export default function Home() {
           </Box>
         </Box>
       </StyledHome>
+      <Footer />
     </>
   );
 }

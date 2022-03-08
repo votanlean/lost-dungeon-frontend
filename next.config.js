@@ -28,6 +28,10 @@ module.exports = {
         source: '/regist-playfab-user',
         destination: '/regist-playfab-user',
       },
+      {
+        source: '/game',
+        destination: '/game',
+      },
     ];
   },
 };
