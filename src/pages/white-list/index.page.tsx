@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Box, Button, styled, NoSsr } from '@mui/material';
 import { addDays } from 'date-fns';
 import Image from 'next/image';
-import Countdown from 'react-countdown';
+import Countdown, { CountdownRenderProps } from 'react-countdown';
 import { useWeb3React } from '@web3-react/core';
 import { injected } from 'components/wallet/connectors';
 import OnGoingCountdown from './components/OnGoingCountdown';
@@ -68,7 +68,7 @@ export default function WhiteList() {
   );
 }
 
-const renderStart = ({ days, hours, minutes, seconds, completed }: any) => {
+const renderStart = ({ days, hours, minutes, seconds, completed }: CountdownRenderProps) => {
   if (completed) {
     const endDate = addDays(START_DATE, DURATION_IN_DAYS);
     return <Countdown date={endDate} renderer={renderOnGoing} />;

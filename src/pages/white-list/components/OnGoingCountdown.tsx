@@ -6,10 +6,10 @@ import { register, useCheckIsRegistered, getCountdownString } from '../helpers';
 import { StyledCountdownTime, StyledCountdownTitle, StyledButton } from './styledComponents';
 
 interface IProps {
-  days?: number;
-  hours?: number;
-  minutes?: number;
-  seconds?: number;
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
 }
 
 function OnGoingCountdown({ days, hours, minutes, seconds }: IProps) {

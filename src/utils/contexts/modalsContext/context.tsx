@@ -80,7 +80,7 @@ const useSnackbar = () => {
     (message: string, props: SnackbarProps = {}) => {
       const { onClose, ...rest } = props;
       const handleOnClose = (
-        event: React.SyntheticEvent<any, Event>,
+        event: Event | React.SyntheticEvent<any, Event>,
         reason: SnackbarCloseReason
       ) => {
         if (typeof onClose === 'function') {

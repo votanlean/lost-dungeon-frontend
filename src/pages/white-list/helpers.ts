@@ -27,12 +27,12 @@ export const useCheckIsRegistered = (address?: string | null) => {
 };
 
 export const getCountdownString = ({
-  days,
+  days = 0,
   hours,
   minutes,
   seconds,
 }: {
-  days: number;
+  days?: number;
   hours: number;
   minutes: number;
   seconds: number;
