@@ -1,17 +1,32 @@
 import Head from 'next/head';
-import { Box, Button, styled } from '@mui/material';
+import { Box, Button, styled, NoSsr } from '@mui/material';
+import { addDays } from 'date-fns';
 import Image from 'next/image';
-import Countdown from 'react-countdown';
+import Countdown, { CountdownRenderProps } from 'react-countdown';
 import { useWeb3React } from '@web3-react/core';
-import { connect } from 'components/wallet/action';
-import { StyledHeader } from 'components/layout/index';
+import { injected } from 'components/wallet/connectors';
+import OnGoingCountdown from './components/OnGoingCountdown';
+import { getCountdownString } from './helpers';
+import {
+  StyledCountdownTime,
+  StyledCountdownTitle,
+  StyledButton,
+} from './components/styledComponents';
+
+const START_DATE = new Date('2022/3/8');
+const DURATION_IN_DAYS = 2;
 
 export default function WhiteList() {
   const { active, account, activate, deactivate } = useWeb3React();
-
-  const register = () => {
-    // alert('register');
+  const connect = async () => {
+    try {
+      await activate(injected);
+    } catch (error) {
+      // TODO: handle error properly
+      console.error('Error while calling activate()', error);
+    }
   };
+
   return (
     <>
       <Head>
@@ -19,75 +34,72 @@ export default function WhiteList() {
       </Head>
       <StyledWhiteList>
         <StyledHeader>
-          <Box sx={{}}>
+          <Box position="relative">
             <Image
-              src="/assets/images/pages/home/intro.png"
-              width="100%"
-              height="100%"
-              alt="intro"
+              src="/assets/images/logo.png"
+              layout="intrinsic"
+              width={96}
+              height={78}
+              alt="logo"
             />
           </Box>
-          <StyledTitle sx={{ mb: 3 }}>White list register</StyledTitle>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Button
-              onClick={() => {
-                if (active) {
-                  deactivate();
-                } else {
-                  connect(activate);
-                }
-              }}
-              variant="contained"
-              sx={{
-                minWidth: '200px',
-              }}
-            >
-              {active
-                ? `${account?.substring(0, 6)}...${account?.substring(account.length - 4)}`
-                : 'Connect metamask'}
-            </Button>
-          </Box>
+
+          {active ? (
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <StyledButton disabled>
+                {`${account?.substring(0, 6)}...${account?.substring(account.length - 4)}`}
+              </StyledButton>
+              <Button onClick={deactivate} variant="text" size="small" sx={{ color: 'white' }}>
+                Disconnect
+              </Button>
+            </Box>
+          ) : (
+            <StyledButton onClick={connect}>Connect</StyledButton>
+          )}
         </StyledHeader>
-        <Box
-          sx={{
-            color: 'white',
-            fontSize: (theme) => theme.typography.pxToRem(64),
-            fontFamily: 'soup of justice',
-          }}
-        >
-          Count down for end register:
+        <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+          <StyledTitle sx={{ mb: 3 }}>Register for IDO</StyledTitle>
+          <NoSsr>
+            <Countdown date={START_DATE} renderer={renderStart} />
+          </NoSsr>
         </Box>
-        <Box
-          sx={{
-            color: 'white',
-            fontSize: (theme) => theme.typography.pxToRem(64),
-            fontFamily: 'soup of justice',
-          }}
-        >
-          <Countdown date={Date.now() + 100000000} />
-        </Box>
-        <Button
-          onClick={() => {
-            if (active) {
-              register();
-            } else {
-              connect(activate);
-            }
-          }}
-          variant="contained"
-        >
-          {active ? 'Register' : 'Connect metamask'}
-        </Button>
       </StyledWhiteList>
     </>
   );
 }
+
+const renderStart = ({ days, hours, minutes, seconds, completed }: CountdownRenderProps) => {
+  if (completed) {
+    const endDate = addDays(START_DATE, DURATION_IN_DAYS);
+    return <Countdown date={endDate} renderer={renderOnGoing} />;
+  }
+  return (
+    <Box sx={{ textAlign: 'center' }}>
+      <StyledCountdownTitle>Starting in:</StyledCountdownTitle>
+      <StyledCountdownTime>
+        {getCountdownString({ days, hours, minutes, seconds })}
+      </StyledCountdownTime>
+    </Box>
+  );
+};
+
+const renderOnGoing = ({ days, hours, minutes, seconds, completed }: any) => {
+  if (completed) {
+    return (
+      <Box
+        component="p"
+        sx={{
+          fontFamily: '"Baloo 2"',
+          color: 'white',
+          fontSize: (theme) => theme.typography.pxToRem(40),
+        }}
+      >
+        Whitelisting has ended
+      </Box>
+    );
+  }
+  return <OnGoingCountdown days={days} hours={hours} minutes={minutes} seconds={seconds} />;
+};
 
 const StyledWhiteList = styled('div')(({ theme }) => ({
   background: 'url(/assets/images/pages/home/bg-stars.jpg)',
@@ -95,9 +107,16 @@ const StyledWhiteList = styled('div')(({ theme }) => ({
   height: '100vh',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'space-between',
   alignItems: 'center',
-  padding: theme.spacing(6, 0),
+  padding: theme.spacing(0, 0),
+}));
+
+const StyledHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
+  padding: theme.spacing(4),
+  width: '100%',
 }));
 
 const StyledTitle = styled('h1')(({ theme }) => ({
