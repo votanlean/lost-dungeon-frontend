@@ -1,167 +1,229 @@
-import { Box, Link, styled } from '@mui/material';
+import { Box, Link, styled, Typography } from '@mui/material';
 import Image from 'next/image';
 import NextLink from 'next/link';
-
-const dataLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'Whitepaper', href: '/' },
-  { name: 'Pitch Deck', href: '/' },
-  { name: 'Marketplace', href: '/' },
-  { name: 'FAQs', href: '/' },
-];
-const dataSocialLinks = [
-  { icon: '/assets/images/icon-telegram.png', href: '/', alt: 'Telegram' },
-  { icon: '/assets/images/icon-discord.png', href: '/', alt: 'Discord' },
-  { icon: '/assets/images/icon-twitter.png', href: '/', alt: 'Twitter' },
-  { icon: '/assets/images/icon-facebook.png', href: '/', alt: 'Facebook' },
-];
+import theme from 'themes/detaultTheme';
 
 export default function Footer() {
   return (
-    <StyledFooter>
-      <StyledFooterContent>
-        <Box sx={{ maxWidth: 312, width: '100%' }}>
-          <Image
-            src="/assets/images/logo.png"
-            width={512}
-            height={512}
-            layout="responsive"
-            alt="logo"
-            sizes="(min-width: 768px) 1024px, 100vw"
+    <Box
+      sx={{
+        background: 'url(/assets/images/footer-bg.png) no-repeat',
+        position: 'relative',
+        width: '100%',
+        height: 866,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingTop: theme.spacing(8),
+        justifyContent: 'space-evenly',
+        fontFamily: 'Baloo 2',
+      }}
+    >
+      <Box
+        sx={{
+          position: 'absolute',
+          background: 'url(/assets/images/footer-bg-shadow.png)',
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+        }}
+      />
+      <Box
+        sx={{
+          zIndex: 1,
+          width: 371,
+          height: 332,
+          background: 'url(/assets/images/footer-logo.png)',
+        }}
+      />
+      <Typography
+        sx={{
+          zIndex: 1,
+          color: '#F0B83D',
+          fontSize: 32,
+          fontFamily: 'Baloo 2',
+        }}
+      >
+        QUICK LINKS
+      </Typography>
+      <Box
+        sx={{
+          width: '400px',
+          zIndex: 1,
+          display: 'flex',
+          color: '#FFFFFF',
+          justifyContent: 'space-between',
+          fontSize: 22,
+          fontWeight: 400,
+        }}
+      >
+        <Typography sx={{}}>Home</Typography>
+        <Typography>Whitepaper</Typography>
+        <Typography>Pitch Deck</Typography>
+        <Typography>Marketplace</Typography>
+      </Box>
+
+      <Typography
+        sx={{
+          zIndex: 1,
+          color: '#F0B83D',
+          fontSize: 32,
+          fontFamily: 'Baloo 2',
+        }}
+      >
+        CONTACT US
+      </Typography>
+
+      <Typography
+        sx={{
+          zIndex: 1,
+          fontFamily: 'Baloo 2',
+          color: '#ffffff',
+        }}
+      >
+        hello@lostdungeon.io
+      </Typography>
+      <Typography
+        sx={{
+          zIndex: 1,
+          color: '#F0B83D',
+          fontSize: 32,
+          textTransform: 'uppercase',
+          fontFamily: 'Baloo 2',
+        }}
+      >
+        Community & Social Channels
+      </Typography>
+      <Box
+        sx={{
+          zIndex: 1,
+          display: 'flex',
+          width: 600,
+          justifyContent: 'space-between',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              width: 48,
+              height: 48,
+              background: 'url(/assets/images/comunicate-1.png)',
+            }}
           />
+          <Typography sx={{ color: '#ffffff', marginTop: theme.spacing(2), fontFamily: 'Baloo 2' }}>
+            telegram
+          </Typography>
         </Box>
-        <Box>
-          <StyledFooterTitle>QUICK LINKS</StyledFooterTitle>
-          {dataLinks.map((item) => (
-            <StyledFooterLink key={item.name}>
-              <NextLink href={item.href} passHref>
-                <Link
-                  underline="none"
-                  sx={{
-                    color: 'colors.white',
-                  }}
-                >
-                  {item.name}
-                </Link>
-              </NextLink>
-            </StyledFooterLink>
-          ))}
-          <StyledFooterTitle sx={{ marginTop: 4 }}>Contact us:</StyledFooterTitle>
-          <StyledFooterLink>
-            <NextLink href="mailto:hello@lostdungeon.io" passHref>
-              <Link
-                underline="none"
-                sx={{
-                  color: 'colors.white',
-                }}
-              >
-                hello@lostdungeon.io
-              </Link>
-            </NextLink>
-          </StyledFooterLink>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              width: 48,
+              height: 48,
+              background: 'url(/assets/images/comunicate-1.png)',
+            }}
+          />
+          <Typography sx={{ color: '#ffffff', marginTop: theme.spacing(2), fontFamily: 'Baloo 2' }}>
+            Discord
+          </Typography>
         </Box>
-        <Box>
-          <StyledFooterTitle>Community & Social Channels</StyledFooterTitle>
-          <Box sx={{ marginTop: 4 }}>
-            {dataSocialLinks.map((item) => (
-              <NextLink href={item.href} passHref key={item.icon}>
-                <Link underline="none" sx={{ marginRight: 3 }}>
-                  <Box sx={{ width: '52px', height: '52px' }}>
-                    <Image
-                      src={item.icon}
-                      width={52}
-                      height={52}
-                      layout="responsive"
-                      alt="logo"
-                      sizes="(min-width: 768px) 1024px, 100vw"
-                    />
-                  </Box>
-                </Link>
-              </NextLink>
-            ))}
-          </Box>
-          <StyledFooterTitle sx={{ marginTop: 9 }}>Join Newsletter</StyledFooterTitle>
-          <Box sx={{ position: 'relative' }}>
-            <StyledInput placeholder="Enter your email" />
-            <StyledButton>
-              <Image
-                src="/assets/images/icon-send.png"
-                width={26}
-                height={22}
-                layout="responsive"
-                alt="send"
-                sizes="(min-width: 768px) 1024px, 100vw"
-              />
-            </StyledButton>
-          </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              width: 48,
+              height: 48,
+              background: 'url(/assets/images/comunicate-1.png)',
+            }}
+          />
+          <Typography sx={{ color: '#ffffff', marginTop: theme.spacing(2), fontFamily: 'Baloo 2' }}>
+            Facebook
+          </Typography>
         </Box>
-      </StyledFooterContent>
-      <StyledFooterBottom>Copyright @Lost Dungeon 2021</StyledFooterBottom>
-    </StyledFooter>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              width: 48,
+              height: 48,
+              background: 'url(/assets/images/comunicate-1.png)',
+            }}
+          />
+          <Typography sx={{ color: '#ffffff', marginTop: theme.spacing(2), fontFamily: 'Baloo 2' }}>
+            Twitter
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              width: 48,
+              height: 48,
+              background: 'url(/assets/images/comunicate-1.png)',
+            }}
+          />
+          <Typography sx={{ color: '#ffffff', marginTop: theme.spacing(2) }}>Youtube</Typography>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              width: 48,
+              height: 48,
+              background: 'url(/assets/images/comunicate-1.png)',
+            }}
+          />
+          <Typography sx={{ color: '#ffffff', marginTop: theme.spacing(2) }}>Medium</Typography>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              width: 48,
+              height: 48,
+              background: 'url(/assets/images/comunicate-1.png)',
+            }}
+          />
+          <Typography sx={{ color: '#ffffff', marginTop: theme.spacing(2) }}>Reddit</Typography>
+        </Box>
+      </Box>
+    </Box>
   );
 }
-
-const StyledFooter = styled('div')(({ theme }) => ({
-  background: 'url(/assets/images/pages/home/bg-stars.jpg)',
-  backgroundRepeat: 'repeat',
-  padding: theme.spacing(0, 10),
-  fontFamily: `"Baloo 2"`,
-}));
-
-const StyledFooterContent = styled('div')(({ theme }) => ({
-  padding: theme.spacing(8, 0),
-  borderTop: `1px solid ${theme.palette.colors.white5}`,
-  borderBottom: `1px solid ${theme.palette.colors.white5}`,
-  maxWidth: 1240,
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  display: 'flex',
-  justifyContent: 'space-between',
-}));
-
-const StyledFooterTitle = styled('h1')(({ theme }) => ({
-  fontSize: theme.typography.pxToRem(13),
-  color: theme.palette.colors.secondary2,
-  textTransform: 'uppercase',
-}));
-
-const StyledFooterLink = styled('h4')(({ theme }) => ({
-  fontSize: theme.typography.pxToRem(13),
-  color: theme.palette.colors.white,
-}));
-
-const StyledFooterBottom = styled('p')(({ theme }) => ({
-  fontSize: theme.typography.pxToRem(13),
-  color: theme.palette.colors.white,
-  padding: theme.spacing(5, 0),
-  margin: 0,
-  textAlign: 'center',
-}));
-
-const StyledInput = styled('input')(({ theme }) => ({
-  height: theme.spacing(9),
-  width: theme.spacing(50),
-  padding: theme.spacing(0, 2),
-  fontSize: theme.typography.pxToRem(13),
-  background: 'transparent',
-  boxShadow: 'none',
-  borderRadius: 0,
-  border: `1px solid ${theme.palette.colors.white5}`,
-  color: theme.palette.colors.white,
-  outline: 'none',
-  fontFamily: `"Baloo 2"`,
-}));
-
-const StyledButton = styled('button')(({ theme }) => ({
-  width: 26,
-  height: 22,
-  border: 'none',
-  background: 'transparent',
-  boxShadow: 'none',
-  borderRadius: 0,
-  position: 'absolute',
-  top: '50%',
-  transform: 'translateY(-50%)',
-  right: theme.spacing(2),
-  cursor: 'pointer',
-}));

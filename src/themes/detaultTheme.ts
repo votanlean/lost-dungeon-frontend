@@ -61,6 +61,12 @@ const theme = createTheme({
           font-weight: 400;
           src: url('/assets/fonts/iCielSoupofJustice.ttf');
         }
+        @font-face {
+          font-family: 'Baloo 2';
+          font-style: normal;
+          font-weight: 400;
+          src: url('/assets/fonts/Baloo2-VariableFont_wght.ttf');
+        }
       
       `,
       defaultProps: {
@@ -473,7 +479,7 @@ const theme = createTheme({
   unstable_strictMode: true,
   typography: {
     fontFamily:
-      '"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+      '"Baloo 2",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
     h1: {
       fontFamily:
         '"PlusJakartaSans-ExtraBold",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
